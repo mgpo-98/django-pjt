@@ -1,12 +1,14 @@
-{% extends 'base.html' %} {% load django_bootstrap5 %} {% block content %}
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
 
-  <h1>signup.html</h1>
-  <hr>
   <div class="container">
+    <h1>login.html</h1>
+    <hr>
     <form action="{% url 'accounts:login' %}" method="POST">
       {% bootstrap_form form%}
       {% csrf_token %}
-      
+
       <input type="submit" class="btn btn-primary">
     </form>
   </div>
