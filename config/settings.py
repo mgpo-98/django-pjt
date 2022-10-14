@@ -34,6 +34,7 @@ AUTH_USER_MODEL = 'accounts.Users'
 
 
 INSTALLED_APPS = [
+    'reviews',
     'django_bootstrap5',
     'accounts',
     'django.contrib.admin',
