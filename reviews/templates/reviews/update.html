@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
-<div class="container">
-    <h1>update.html</h1>
-    <hr>
+
+<h2 class="m-3">리뷰수정하기</h2>
+<hr>
+<div class="container m-5">
     <form method="POST">
         {% bootstrap_form form %}
         {% csrf_token %}

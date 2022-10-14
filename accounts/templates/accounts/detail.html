@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-
-<h1>detail.html</h1>
+<h2 class="m-3">정보 상세보기</h2>
 <hr>
-
-<p>ID : {{ d.id }} </p>
-<p>시간 : {{ d.date_joined }}</p>
-<p>이름 : {{ d.username }}</p>
-<p>이메일 : {{ d.email }} </p>
+<div class="m-3">
+    <p>작성번호 : {{ d.id }} </p>
+    <p>작성시간 : {{ d.date_joined }}</p>
+    <p>이름 : {{ d.username }}</p>
+    <p>이메일 : {{ d.email }} </p>
+</div>
 <hr>
-<button>
-    <a href="{% url 'accounts:update' %}">수정하기</a>
-</button>
+<div class="m-3">
+    <a href="{% url 'accounts:update' %}"><button type="button" class="btn btn-outline-dark">수정하기</button></a>
+</div>
+
 {% endblock content %}
