@@ -1,7 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>reviews/index.html</h1>
-  <a href="{% url 'reviews:create' %}">
-    글 작성하기
-  </a>
+<h1>reviews/index.html</h1>
+<a href="{% url 'reviews:create' %}">
+  글 작성하기
+</a>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">movie_name</th>
+
+      <th scope="col">grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in reviews %}
+
+    <tr>
+      <th scope="row">{{r.id}}</th>
+
+      <td><a href="{% url 'reviews:detail' r.pk %}"> {{r.title}}</a></td>
+      <td>{{r.movie_name}}</td>
+
+      <td>{{r.grade}}</td>
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
 {% endblock content %}
