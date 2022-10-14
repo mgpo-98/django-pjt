@@ -21,7 +21,9 @@ def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            ## 회원 가입 후 로그인
+            auth_login(request, user)
             return redirect('accounts:index')
     
     context = {
@@ -66,3 +68,29 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('accounts:index')
+
+def delete(request):
+    if request.user.is_authenticated:
+        request.user.delete()
+        auth_logout(request)
+
+    return redirect('accounts:index')
+
+from django.contrib.auth.forms import PasswordChangeForm
+## 비밀번호 변경 시, 로그인 정보가 사라짐 그래서 비밀번호 변경 하고도 로그인 유지를 위해서
+from django.contrib.auth import update_session_auth_hash
+
+def update_password(request):
+
+    form = PasswordChangeForm(request.user)
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            ## 비밀번호 변경 시, 로그인 정보가 사라짐 그래서 비밀번호 변경 하고도 로그인 유지를 위해서
+            update_session_auth_hash(request, user)
+            return redirect('accounts:index')
+    context = {
+        "form" : form
+    }
+    return render(request, 'accounts/update_password.html', context)
