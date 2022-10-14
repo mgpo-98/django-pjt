@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>index.html</h1>
+<hr>
+
+{% if request.user.is_authenticated %}
+
 <table class="table">
   <thead>
     <th>ID</th>
@@ -11,13 +15,14 @@
     {% for user in users %}
     <tr>
       <td>{{ user.id }}</td>
-      <td>
-        <a href="{% url 'accounts:detail' user.pk %}">{{user}}</a>
-      </td>
+      <td><a href="{% url 'accounts:detail' user.pk %}">{{user}}</a></td>
       <td>{{ user.email }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+
+
+{% endif %}
 
 {% endblock content %}
