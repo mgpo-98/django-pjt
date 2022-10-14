@@ -17,24 +17,31 @@
       <div class="container d-flex flex-wrap">
         <ul class="nav me-auto">
           <li class="nav-item">
-            <a href="{% url 'accounts:index' %}" class="nav-link link-dark px-2 active" aria-current="page">Home</a>
+            <a href="{% url 'accounts:index' %}" class="nav-link link-dark px-2 active fs-3" aria-current="page">Home</a>
           </li>
         </ul>
         <ul class="nav">
           {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a href="#" class="nav-link link-dark px-2">hi,
-                {{ user }}</a>
+              <a href="{% url 'accounts:detail' user.pk %}" class="nav-link link-dark px-2 ">{{ user }}님 안녕하세요! (~￣▽￣) ~</a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'accounts:logout' %}" class="nav-link link-dark px-2">Logout</a>
+              <a href="{% url 'accounts:logout' %}" class="px-2 text-decoration-none"><button type="button" class="btn btn-outline-dark">
+                로그아웃</button></a>
+            </li>
+            <li class="nav-item">
+              <a class=" px-2" href="{% url 'reviews:create' %}"><button type="button" class="btn btn-outline-dark">
+                리뷰 작성하기</button></a>
+            </li>
+            <li class="nav-item">
+              <a class="px-2" href="{% url 'reviews:index' %}"><button type="button" class="btn btn-outline-dark">리뷰 목록</button></a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a href="{% url 'accounts:login' %}" class="nav-link link-dark px-2">Login</a>
+              <a href="{% url 'accounts:login' %}" class="px-2"><button type="button" class="btn btn-outline-dark">로그인</button></a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'accounts:signup' %}" class="nav-link link-dark px-2">Sign up</a>
+              <a href="{% url 'accounts:signup' %}" class="px-2"><button type="button" class="btn btn-outline-dark">회원가입</button></a>
             </li>
           {% endif %}
         </ul>

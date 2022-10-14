@@ -2,9 +2,9 @@
 {% load django_bootstrap5 %}
 {% block content %}
 
-  <div class="container">
-    <h1>login.html</h1>
+    <h2 class="m-3">로그인</h2>
     <hr>
+    <div class="container m-5">
     <form action="{% url 'accounts:login' %}" method="POST">
       {% bootstrap_form form%}
       {% csrf_token %}
