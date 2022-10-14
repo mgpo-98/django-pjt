@@ -12,10 +12,13 @@
   </head>
 
   <body>
-    <h1>logo</h1>
-    <a href="{% url 'accounts:signup' %}">
-      회원가입
-    </a>
+    <h1><a href="{% url 'accounts:index' %}">logo</a></h1>
+    {% if request.user.is_authenticated %}
+    <a class="" href="{% url 'accounts:logout' %}">{{user}}님 Logout</a>
+    {% else %}
+    <a class="" href="{% url 'accounts:login' %}">Login</a>
+    <a class="" href="{% url 'accounts:signup' %}">Signup</a>
+    {% endif %}
     <hr>
 
     {% block content %}{% endblock %}

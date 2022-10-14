@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> 회원정보 조회 (detail)</h1>
+<h1>detail.html</h1>
+<hr>
 <p>ID : {{ d.id }} </p>
 <p>시간 : {{ d.date_joined }}</p>
 <p>이름 : {{ d.username }}</p>
 <p>이메일 : {{ d.email }} </p>
-
-<div>
-    <button>
-        <a href="{% url 'accounts:update' %}">수정하기</a>
-    </button>
-</div>
+<hr>
+<button>
+    <a href="{% url 'accounts:update' %}">수정하기</a>
+</button>
 {% endblock content %}
